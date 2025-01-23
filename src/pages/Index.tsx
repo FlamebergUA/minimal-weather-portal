@@ -31,7 +31,7 @@ const Index = () => {
 
   if (error?.message === "API_KEY_REQUIRED" || error?.message === "INVALID_API_KEY") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-6">
+      <div className="p-6">
         <ApiKeyForm />
       </div>
     );
@@ -39,16 +39,16 @@ const Index = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
-        <div className="text-center">
-          <p className="text-red-500">Error loading weather data</p>
+      <div className="flex items-center justify-center p-6">
+        <div className="text-center text-white">
+          <p>Error loading weather data</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-6">
+    <div className="p-6">
       <div className="max-w-3xl mx-auto space-y-6">
         {isLoading ? (
           <>
@@ -69,6 +69,7 @@ const Index = () => {
                 humidity={weather.current.humidity}
                 windSpeed={weather.current.windSpeed}
                 pressure={weather.current.pressure}
+                location={weather.location}
               />
               <div className="grid grid-cols-5 gap-4 animate-fade-in-delayed">
                 {weather.daily.map((day, index) => (
