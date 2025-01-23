@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useWeather } from "@/services/weather";
+import { useWeather, ApiKeyForm } from "@/services/weather";
 import { CurrentWeather } from "@/components/CurrentWeather";
 import { ForecastDay } from "@/components/ForecastDay";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -28,6 +28,14 @@ const Index = () => {
       );
     }
   }, [toast]);
+
+  if (error?.message === "API_KEY_REQUIRED" || error?.message === "INVALID_API_KEY") {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-6">
+        <ApiKeyForm />
+      </div>
+    );
+  }
 
   if (error) {
     return (
