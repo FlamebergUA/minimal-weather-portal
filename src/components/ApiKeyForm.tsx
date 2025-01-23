@@ -1,6 +1,6 @@
 import { toast } from "@/components/ui/use-toast";
 
-const setApiKey = (key: string) => localStorage.setItem("OPENWEATHER_API_KEY", key);
+const setApiKey = (key: string) => localStorage.setItem("WEATHER_API_KEY", key);
 
 export const ApiKeyForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -12,7 +12,7 @@ export const ApiKeyForm = () => {
       setApiKey(apiKey);
       toast({
         title: "API Key Saved",
-        description: "Your OpenWeather API key has been saved.",
+        description: "Your WeatherAPI key has been saved.",
       });
       window.location.reload();
     }
@@ -20,16 +20,16 @@ export const ApiKeyForm = () => {
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg">
-      <h2 className="text-xl font-semibold mb-4">OpenWeather API Key Required</h2>
+      <h2 className="text-xl font-semibold mb-4">WeatherAPI Key Required</h2>
       <p className="text-sm text-gray-600 mb-4">
-        To use this weather dashboard, you need an OpenWeather API key. You can get one for free at{" "}
+        To use this weather dashboard, you need a WeatherAPI key. You can get one for free at{" "}
         <a
-          href="https://home.openweathermap.org/api_keys"
+          href="https://www.weatherapi.com/signup.aspx"
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-500 hover:text-blue-600"
         >
-          OpenWeatherMap
+          WeatherAPI.com
         </a>
       </p>
       <form onSubmit={handleSubmit} className="space-y-4">
